@@ -1,232 +1,220 @@
 <title>Falcon Shipping Co.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Fraunces:opsz,wght@9..144,400..700&family=Figtree:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
 <style>
   :root{
-    --paper:#FBF6EE;
-    --paper-2:#F3EBDE;
+    --paper:#FFFFFF;
+    --paper-2:#F5F2EA;
     --card:#FFFFFF;
-    --ink:#1B1420;
-    --ink-soft:#4A3F49;
-    --muted:#8A8079;
-    --line:#E7DDCE;
-    --coral:#FF5A32;
-    --coral-deep:#E8431E;
-    --teal:#0FA99C;
-    --teal-soft:#DDF3F0;
-    --sky:#F7ECE2;
-    --shadow:0 18px 40px -24px rgba(27,20,32,.45);
-    --shadow-sm:0 8px 22px -16px rgba(27,20,32,.4);
+    --ink:#16233F;           /* brand navy */
+    --ink-soft:#3F4C64;
+    --muted:#8A8F9E;
+    --line:#E6E3D8;
+    --gold:#B0894F;          /* brand gold accent */
+    --gold-deep:#977338;
+    --gold-tint:#F3ECDD;
+    --navy-tint:#EAEEF5;
+    --panel:#16233F;         /* dark navy panel (CTA band) */
+    --panel-fg:#F5F2EA;
+    --btn-bg:#B0894F;        /* primary = gold */
+    --btn-fg:#14213B;
+    --btn-bg-hover:#9A7639;
+    --shadow:0 20px 44px -26px rgba(22,35,63,.42);
+    --shadow-sm:0 10px 24px -18px rgba(22,35,63,.4);
   }
-  :root{ --paper-2:#F3EBDE; }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:#141019;
-      --paper-2:#1B1522;
-      --card:#201927;
-      --ink:#F7F1E9;
-      --ink-soft:#CDBFC9;
-      --muted:#9A8F98;
-      --line:#2E2536;
-      --coral:#FF6B44;
-      --coral-deep:#FF8461;
-      --teal:#3AD1C2;
-      --teal-soft:#173230;
-      --sky:#241B2c;
-      --shadow:0 22px 46px -26px rgba(0,0,0,.7);
-      --shadow-sm:0 10px 24px -18px rgba(0,0,0,.65);
+      --paper:#0E1626;
+      --paper-2:#13203A;
+      --card:#182742;
+      --ink:#F3F1E9;
+      --ink-soft:#C4CCDA;
+      --muted:#8B94A6;
+      --line:#26375A;
+      --gold:#CBA163;
+      --gold-deep:#B78A47;
+      --gold-tint:#1C2C49;
+      --navy-tint:#17263F;
+      --panel:#0A1120;
+      --panel-fg:#F3F1E9;
+      --btn-bg:#CBA163;
+      --btn-fg:#12203A;
+      --btn-bg-hover:#D8B478;
+      --shadow:0 22px 48px -26px rgba(0,0,0,.72);
+      --shadow-sm:0 12px 26px -18px rgba(0,0,0,.66);
     }
   }
   :root[data-theme="dark"]{
-    --paper:#141019;
-    --paper-2:#1B1522;
-    --card:#201927;
-    --ink:#F7F1E9;
-    --ink-soft:#CDBFC9;
-    --muted:#9A8F98;
-    --line:#2E2536;
-    --coral:#FF6B44;
-    --coral-deep:#FF8461;
-    --teal:#3AD1C2;
-    --teal-soft:#173230;
-    --sky:#241B2C;
-    --shadow:0 22px 46px -26px rgba(0,0,0,.7);
-    --shadow-sm:0 10px 24px -18px rgba(0,0,0,.65);
+    --paper:#0E1626;--paper-2:#13203A;--card:#182742;--ink:#F3F1E9;--ink-soft:#C4CCDA;--muted:#8B94A6;
+    --line:#26375A;--gold:#CBA163;--gold-deep:#B78A47;--gold-tint:#1C2C49;--navy-tint:#17263F;
+    --panel:#0A1120;--panel-fg:#F3F1E9;--btn-bg:#CBA163;--btn-fg:#12203A;--btn-bg-hover:#D8B478;
+    --shadow:0 22px 48px -26px rgba(0,0,0,.72);--shadow-sm:0 12px 26px -18px rgba(0,0,0,.66);
   }
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Figtree",system-ui,-apple-system,Segoe UI,sans-serif;
-    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{font-family:"Bricolage Grotesque","Figtree",sans-serif;font-weight:700;line-height:1.02;letter-spacing:-.02em;text-wrap:balance;margin:0}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Figtree",system-ui,-apple-system,Segoe UI,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Fraunces","Georgia",serif;font-weight:600;line-height:1.05;letter-spacing:-.01em;text-wrap:balance;margin:0}
   a{color:inherit}
   .wrap{width:min(1140px,92vw);margin-inline:auto}
-  .eyebrow{font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
   .section-pad{padding:88px 0}
+
+  /* Wordmark */
+  .wordmark{font-family:"Cinzel",serif;font-weight:600;letter-spacing:.14em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+  .wordmark .glyph{width:30px;height:30px;flex:none;color:var(--ink)}
+  .wordmark b{color:var(--gold);font-weight:700}
 
   /* Buttons */
   .btn{display:inline-flex;align-items:center;gap:.5em;font-family:"Figtree";font-weight:600;font-size:15.5px;
-    padding:13px 22px;border-radius:999px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
-  .btn-primary{background:var(--coral);color:#fff}
-  .btn-primary:hover{background:var(--coral-deep);transform:translateY(-2px);box-shadow:0 14px 26px -14px rgba(255,90,50,.7)}
+    padding:13px 22px;border-radius:10px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease}
+  .btn-primary{background:var(--btn-bg);color:var(--btn-fg)}
+  .btn-primary:hover{background:var(--btn-bg-hover);transform:translateY(-2px);box-shadow:0 14px 26px -14px rgba(176,137,79,.6)}
   .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
   .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
-  .btn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 
   /* Nav */
-  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav-inner{display:flex;align-items:center;gap:20px;padding:15px 0}
-  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:"Bricolage Grotesque";font-weight:800;font-size:20px;letter-spacing:-.02em;margin-right:auto}
-  .brand .mark{width:34px;height:34px;flex:none}
+  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;gap:20px;padding:14px 0}
+  .brand{margin-right:auto;font-size:19px}
   .nav-links{display:flex;gap:6px;align-items:center}
-  .nav-links a{font-weight:500;font-size:15px;text-decoration:none;color:var(--ink-soft);padding:8px 14px;border-radius:999px;transition:color .15s,background .15s}
+  .nav-links a{font-weight:500;font-size:15px;text-decoration:none;color:var(--ink-soft);padding:8px 14px;border-radius:8px;transition:color .15s,background .15s}
   .nav-links a:hover,.nav-links a.active{color:var(--ink);background:var(--paper-2)}
-  .nav-cta{margin-left:6px}
-  .menu-btn{display:none;background:none;border:1.5px solid var(--line);border-radius:10px;padding:8px 11px;cursor:pointer;color:var(--ink)}
+  .menu-btn{display:none;background:none;border:1.5px solid var(--line);border-radius:9px;padding:8px 11px;cursor:pointer;color:var(--ink)}
 
   /* Hero */
-  .hero{position:relative;overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:70px 0 84px}
-  .hero h1{font-size:clamp(42px,6.4vw,78px)}
-  .hero h1 .pop{color:var(--coral);position:relative}
-  .lede{font-size:clamp(18px,2vw,20.5px);color:var(--ink-soft);max-width:34ch;margin:22px 0 30px}
-  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-  .stats{display:flex;gap:30px;margin-top:40px;flex-wrap:wrap}
-  .stat .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:30px;line-height:1}
-  .stat .l{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 80% at 50% -10%, var(--gold-tint), transparent 60%)}
+  .hero-inner{text-align:center;padding:64px 0 78px;display:flex;flex-direction:column;align-items:center}
+  .logo-plate{background:#FFFFFF;border:1px solid var(--line);border-radius:22px;padding:26px 40px;box-shadow:var(--shadow);
+    max-width:360px;width:min(360px,80vw)}
+  .logo-plate img{display:block;width:100%;height:auto}
+  .hero h1{font-size:clamp(34px,5vw,60px);margin:34px 0 0;max-width:16ch}
+  .hero h1 .pop{color:var(--gold);font-style:italic}
+  .lede{font-size:clamp(17px,1.9vw,20px);color:var(--ink-soft);max-width:52ch;margin:20px auto 30px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .stats{display:flex;gap:44px;margin-top:46px;flex-wrap:wrap;justify-content:center}
+  .stat .n{font-family:"Fraunces",serif;font-weight:600;font-size:32px;line-height:1;color:var(--ink)}
+  .stat .l{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 
-  /* Hero art */
-  .sky-card{position:relative;background:
-      radial-gradient(120% 90% at 80% 10%, var(--sky), transparent 60%),
-      linear-gradient(160deg,var(--card),var(--paper-2));
-    border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);
-    aspect-ratio:5/5.2;overflow:hidden}
-  .route{position:absolute;inset:0}
-  .glide{position:absolute;top:16%;left:-14%;width:74px;color:var(--coral);animation:glide 9s linear infinite}
-  @keyframes glide{0%{transform:translate(0,0) rotate(2deg)}50%{transform:translate(150%,120%) rotate(-3deg)}100%{transform:translate(320%,52%) rotate(2deg)}}
-  .parcel{position:absolute;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-sm);padding:12px 14px;display:flex;gap:10px;align-items:center;font-size:13.5px;font-weight:600}
-  .parcel .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none;box-shadow:0 0 0 4px var(--teal-soft)}
-  .p1{top:22%;right:8%}
-  .p2{bottom:16%;left:9%}
-  .p3{bottom:40%;right:14%;background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .p3 .dot{background:var(--coral);box-shadow:0 0 0 4px rgba(255,90,50,.25)}
-  .track{position:absolute;left:18px;bottom:16px;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--muted)}
-
-  /* Marquee categories */
+  /* Marquee */
   .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);overflow:hidden}
-  .marq{display:flex;gap:52px;padding:16px 0;white-space:nowrap;animation:marq 26s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;color:var(--ink-soft)}
+  .marq{display:flex;gap:52px;padding:15px 0;white-space:nowrap;animation:marq 28s linear infinite;
+    font-family:"Cinzel",serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--ink-soft)}
   .marq span{display:inline-flex;align-items:center;gap:14px}
-  .marq b{color:var(--coral)}
+  .marq b{color:var(--gold)}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* Section head */
-  .head{max-width:56ch;margin-bottom:44px}
-  .head h2{font-size:clamp(30px,4vw,44px);margin-top:14px}
+  .head{max-width:58ch;margin-bottom:44px}
+  .head h2{font-size:clamp(29px,3.8vw,43px);margin-top:14px}
   .head p{color:var(--ink-soft);margin:14px 0 0;font-size:18px}
 
   /* Feature cards */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow-sm);transition:transform .18s ease, box-shadow .18s ease}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow-sm);transition:transform .18s ease, box-shadow .18s ease}
   .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-  .card .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--teal-soft);color:var(--teal);margin-bottom:16px}
-  .card h3{font-size:20px;margin-bottom:8px}
+  .card .ic{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;background:var(--gold-tint);color:var(--gold-deep);margin-bottom:16px}
+  .card h3{font-size:21px;margin-bottom:8px}
   .card p{margin:0;color:var(--ink-soft);font-size:15.5px}
 
   /* Categories */
   .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-  .cat{position:relative;border-radius:18px;padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);overflow:hidden;background:var(--card);transition:transform .18s}
+  .cat{position:relative;border-radius:14px;padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);overflow:hidden;background:var(--card);transition:transform .18s;text-decoration:none}
   .cat:hover{transform:translateY(-4px)}
   .cat .k{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .cat h3{font-size:19px;margin-top:6px}
-  .cat.c1{background:linear-gradient(150deg,var(--card),#FFE7DE)}
-  .cat.c2{background:linear-gradient(150deg,var(--card),#DDF3F0)}
-  .cat.c3{background:linear-gradient(150deg,var(--card),#FBEFD6)}
-  .cat.c4{background:linear-gradient(150deg,var(--card),#E8E2F5)}
-  :root[data-theme="dark"] .cat.c1,:root[data-theme="dark"] .cat.c2,:root[data-theme="dark"] .cat.c3,:root[data-theme="dark"] .cat.c4{background:var(--card)}
+  .cat h3{font-size:19px;margin-top:6px;color:var(--ink)}
+  .cat.c1{background:linear-gradient(150deg,var(--card),var(--gold-tint))}
+  .cat.c2{background:linear-gradient(150deg,var(--card),var(--navy-tint))}
+  .cat.c3{background:linear-gradient(150deg,var(--card),var(--gold-tint))}
+  .cat.c4{background:linear-gradient(150deg,var(--card),var(--navy-tint))}
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cat{background:var(--card)!important}}
+  :root[data-theme="dark"] .cat{background:var(--card)!important}
 
   /* About */
   #about{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
   .about-copy p{color:var(--ink-soft);font-size:17.5px}
-  .values{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-  .value{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-  .value .n{font-family:"Space Mono",monospace;font-size:12px;color:var(--coral);font-weight:700}
-  .value h3{font-size:17px;margin:8px 0 6px}
+  .values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .value{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .value .n{font-family:"Space Mono",monospace;font-size:12px;color:var(--gold);font-weight:700}
+  .value h3{font-size:18px;margin:8px 0 6px}
   .value p{margin:0;font-size:14.5px;color:var(--ink-soft)}
-  .bigstats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;border-top:1px dashed var(--line);padding-top:32px}
-  .bigstat .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(30px,4vw,42px);color:var(--ink)}
+  .bigstats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;border-top:1px solid var(--line);padding-top:32px}
+  .bigstat .n{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(28px,4vw,40px);color:var(--ink)}
   .bigstat .l{color:var(--ink-soft);font-size:14.5px;margin-top:4px}
 
   /* Contact */
   .contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:52px;align-items:start}
   form{display:grid;gap:16px}
   .field{display:grid;gap:7px}
-  label{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
-  input,textarea{font-family:"Figtree";font-size:16px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:13px;padding:13px 15px;width:100%;transition:border-color .15s}
-  input:focus,textarea:focus{outline:none;border-color:var(--coral)}
+  label{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  input,textarea{font-family:"Figtree";font-size:16px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:11px;padding:13px 15px;width:100%;transition:border-color .15s}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold)}
   textarea{resize:vertical;min-height:120px}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .info{display:grid;gap:18px}
-  .info .block{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+  .info{display:grid;gap:16px}
+  .info .block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
   .info .k{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .info .v{font-size:17px;font-weight:600;margin-top:5px}
-  .info .v a{color:var(--coral);text-decoration:none}
+  .info .v{font-size:16.5px;font-weight:600;margin-top:6px;line-height:1.5}
+  .info .v a{color:var(--gold-deep);text-decoration:none}
   .info .v a:hover{text-decoration:underline}
-  .hours{font-size:14.5px;color:var(--ink-soft);line-height:1.9;margin-top:5px}
+  .hours{font-size:14.5px;color:var(--ink-soft);line-height:1.9;margin-top:6px}
   .note{font-size:13px;color:var(--muted);margin-top:2px}
 
   /* CTA band */
-  .band{background:var(--ink);color:var(--paper);border-radius:26px;padding:52px;text-align:center;margin:0 auto;box-shadow:var(--shadow)}
-  .band h2{font-size:clamp(28px,4vw,40px);color:var(--paper)}
-  .band p{color:color-mix(in srgb,var(--paper) 72%,transparent);max-width:46ch;margin:14px auto 26px}
+  .band{background:var(--panel);color:var(--panel-fg);border-radius:22px;padding:54px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .band h2{font-size:clamp(27px,4vw,40px);color:var(--panel-fg)}
+  .band p{color:color-mix(in srgb,var(--panel-fg) 74%,transparent);max-width:48ch;margin:14px auto 26px}
+  .band .eyebrow{color:var(--gold)}
 
-  footer{padding:44px 0 54px;border-top:1px solid var(--line);margin-top:0}
-  .foot{display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between}
-  .foot .brand{margin-right:0}
-  .foot small{color:var(--muted);font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.04em}
-  .foot-links{display:flex;gap:18px}
-  .foot-links a{color:var(--ink-soft);text-decoration:none;font-size:14px}
-  .foot-links a:hover{color:var(--coral)}
+  footer{padding:48px 0 56px;border-top:1px solid var(--line)}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;align-items:start}
+  .foot-brand .wordmark{font-size:20px;margin-bottom:14px}
+  .foot-brand p{color:var(--ink-soft);font-size:14.5px;margin:0;max-width:34ch;line-height:1.7}
+  .foot-col h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:700}
+  .foot-col a{display:block;color:var(--ink-soft);text-decoration:none;font-size:14.5px;padding:4px 0}
+  .foot-col a:hover{color:var(--gold-deep)}
+  .foot-col address{font-style:normal;color:var(--ink-soft);font-size:14.5px;line-height:1.7}
+  .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:36px;padding-top:22px;border-top:1px solid var(--line)}
+  .foot-bottom small{color:var(--muted);font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.03em}
 
   @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:34px;padding:48px 0 60px}
-    .sky-card{aspect-ratio:5/4;max-width:520px}
+    .hero-inner{padding:44px 0 56px}
     .cards{grid-template-columns:1fr}
     .cats{grid-template-columns:1fr 1fr}
     .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
+    .foot{grid-template-columns:1fr 1fr}
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px 4vw 16px;gap:2px}
     .nav-links.open{display:flex}
     .nav-links a{padding:12px 14px}
-    .nav-cta{display:none}
     .menu-btn{display:inline-flex}
     .band{padding:38px 24px}
     .section-pad{padding:64px 0}
   }
-  @media (max-width:520px){ .cats{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.values{grid-template-columns:1fr} }
+  @media (max-width:560px){ .cats,.row2,.values,.foot{grid-template-columns:1fr} .stats{gap:28px} }
 </style>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#home" class="brand" aria-label="Falcon Shipping Company home">
-      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <rect width="40" height="40" rx="11" fill="#FF5A32"/>
-        <path d="M9 25c6-1 9-4 11-9 1 3 1 5 0 7 3-1 6-3 8-7-1 7-6 12-13 12-3 0-5-1-6-3Z" fill="#fff"/>
-        <circle cx="26.5" cy="13.5" r="1.6" fill="#1B1420"/>
+    <a href="#home" class="wordmark brand" aria-label="Falcon home">
+      <svg class="glyph" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M4 27c9-1 15-6 18-15 1 4 1 8-1 11 5-1 10-5 13-12-1 12-10 20-21 20-4 0-8-1-9-4Z" fill="currentColor"/>
+        <circle cx="30" cy="14" r="1.7" fill="var(--gold)"/>
       </svg>
-      Falcon<span style="color:var(--coral)">.</span>
+      FALCON
     </a>
     <nav class="nav-links" id="navlinks">
       <a href="#home" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="#shop" class="btn btn-primary nav-cta">Shop on Amazon
+    <a href="#shop" class="btn btn-primary" style="margin-left:4px">Shop on Amazon
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
@@ -237,37 +225,23 @@
 
 <!-- HOME / HERO -->
 <section id="home" class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Lifestyle goods · shipped fast in the USA</p>
-      <h1>Everyday upgrades, delivered at <span class="pop">falcon speed.</span></h1>
-      <p class="lede">Falcon Shipping Company curates fresh, functional lifestyle products and ships them across the U.S. through our Amazon storefront — with Prime-fast fulfillment you can count on.</p>
-      <div class="hero-cta">
-        <a href="#shop" class="btn btn-primary">Shop the storefront
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#about" class="btn btn-ghost">Our story</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="n">2‑day</div><div class="l">Prime shipping</div></div>
-        <div class="stat"><div class="n">500+</div><div class="l">Curated products</div></div>
-        <div class="stat"><div class="n">4.8★</div><div class="l">Avg. rating</div></div>
-      </div>
+  <div class="wrap hero-inner">
+    <div class="logo-plate">
+      <img src="logo.jpg" alt="Falcon — Global Trade. Trusted Connections." width="360" height="360">
     </div>
-
-    <div class="hero-art">
-      <div class="sky-card">
-        <svg class="route" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-          <path d="M40 300 C 140 200, 240 260, 360 90" stroke="var(--line)" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
-        </svg>
-        <svg class="glide" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-          <path d="M4 26c8-1 13-6 15-13 2 4 2 8 0 11 4-1 8-4 11-10-1 10-8 17-18 17-4 0-7-2-8-5Z" fill="currentColor"/>
-        </svg>
-        <div class="parcel p1"><span class="dot"></span> Out for delivery</div>
-        <div class="parcel p2"><span class="dot"></span> Packed with care</div>
-        <div class="parcel p3"><span class="dot"></span> Order confirmed</div>
-        <div class="track">TRK# FLC‑9 4471 0082 · IN TRANSIT →</div>
-      </div>
+    <p class="eyebrow" style="margin-top:26px">Global trade · Trusted connections</p>
+    <h1>Everyday lifestyle goods, delivered at <span class="pop">falcon speed.</span></h1>
+    <p class="lede">Falcon curates fresh, functional lifestyle products and ships them across the United States through our Amazon storefront — with Prime‑fast, fully tracked fulfillment you can count on.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn btn-primary">Shop the storefront
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#about" class="btn btn-ghost">Our story</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">2‑day</div><div class="l">Prime shipping</div></div>
+      <div class="stat"><div class="n">500+</div><div class="l">Curated products</div></div>
+      <div class="stat"><div class="n">4.8★</div><div class="l">Average rating</div></div>
     </div>
   </div>
 </section>
@@ -308,10 +282,10 @@
     <div style="margin-top:44px">
       <p class="eyebrow" style="margin-bottom:6px">Shop by mood</p>
       <div class="cats">
-        <a class="cat c1" href="#shop"><span class="k">01 · Everyday</span><h3>Home &amp; Living</h3></a>
-        <a class="cat c2" href="#shop"><span class="k">02 · Recharge</span><h3>Wellness &amp; Self‑care</h3></a>
-        <a class="cat c3" href="#shop"><span class="k">03 · Plug in</span><h3>Tech Accessories</h3></a>
-        <a class="cat c4" href="#shop"><span class="k">04 · Go</span><h3>On‑the‑Go</h3></a>
+        <a class="cat c1" href="#shop"><span class="k">Everyday</span><h3>Home &amp; Living</h3></a>
+        <a class="cat c2" href="#shop"><span class="k">Recharge</span><h3>Wellness &amp; Self‑care</h3></a>
+        <a class="cat c3" href="#shop"><span class="k">Plug in</span><h3>Tech Accessories</h3></a>
+        <a class="cat c4" href="#shop"><span class="k">On the go</span><h3>Travel &amp; Carry</h3></a>
       </div>
     </div>
   </div>
@@ -323,18 +297,16 @@
     <div class="about-grid">
       <div class="about-copy">
         <p class="eyebrow">About Falcon</p>
-        <h2 style="font-size:clamp(30px,4.2vw,46px);margin:14px 0 20px">Young company, sharp instincts, serious about the details.</h2>
-        <p>Falcon Shipping Company started with a simple frustration: great everyday products were too hard to find, and too slow to arrive. So we built a storefront to fix both.</p>
+        <h2 style="font-size:clamp(29px,4.2vw,46px);margin:14px 0 20px">Young company, sharp instincts, serious about the details.</h2>
+        <p>Falcon started with a simple frustration: great everyday products were too hard to find, and too slow to arrive. So we built a storefront to fix both.</p>
         <p>Today we operate a growing Amazon storefront serving customers across the USA. We source lifestyle products that are practical, well‑made and fairly priced — then lean on Amazon's fulfillment network so they reach you fast and arrive right. We're small enough to care about every order, and quick enough to keep our shelves fresh.</p>
         <a href="#contact" class="btn btn-ghost" style="margin-top:8px">Talk to the team</a>
       </div>
-      <div>
-        <div class="values">
-          <div class="value"><div class="n">V1</div><h3>Quality first</h3><p>We'd rather list ten things we love than a hundred we don't.</p></div>
-          <div class="value"><div class="n">V2</div><h3>Speed matters</h3><p>Fast fulfillment isn't a perk — it's the promise in our name.</p></div>
-          <div class="value"><div class="n">V3</div><h3>Straight talk</h3><p>Honest listings, clear photos, no inflated claims.</p></div>
-          <div class="value"><div class="n">V4</div><h3>Customer‑obsessed</h3><p>Every review, message and return teaches us something.</p></div>
-        </div>
+      <div class="values">
+        <div class="value"><div class="n">01</div><h3>Quality first</h3><p>We'd rather list ten things we love than a hundred we don't.</p></div>
+        <div class="value"><div class="n">02</div><h3>Speed matters</h3><p>Fast fulfillment isn't a perk — it's the promise in our name.</p></div>
+        <div class="value"><div class="n">03</div><h3>Straight talk</h3><p>Honest listings, clear photos, no inflated claims.</p></div>
+        <div class="value"><div class="n">04</div><h3>Customer‑obsessed</h3><p>Every review, message and return teaches us something.</p></div>
       </div>
     </div>
     <div class="bigstats">
@@ -371,22 +343,21 @@
 
       <aside class="info">
         <div class="block">
+          <div class="k">Mailing address</div>
+          <div class="v">Falcon<br>30 North Gould Street, STE R<br>Sheridan, Wyoming 82801<br>United States</div>
+        </div>
+        <div class="block">
           <div class="k">Email us</div>
           <div class="v"><a href="mailto:hello@falconshippingco.com">hello@falconshippingco.com</a></div>
           <p class="note">General questions, wholesale &amp; press.</p>
         </div>
         <div class="block">
-          <div class="k">Customer support</div>
-          <div class="v"><a href="mailto:support@falconshippingco.com">support@falconshippingco.com</a></div>
-          <p class="note">Order help is fastest through your Amazon order page.</p>
-        </div>
-        <div class="block">
           <div class="k">Hours</div>
-          <div class="hours">Mon – Fri · 9:00 AM – 6:00 PM EST<br>Weekends · limited support</div>
+          <div class="hours">Mon – Fri · 9:00 AM – 6:00 PM MST<br>Weekends · limited support</div>
         </div>
-        <div class="block" style="background:var(--ink);color:var(--paper);border-color:var(--ink)">
-          <div class="k" style="color:color-mix(in srgb,var(--paper) 60%,transparent)">Storefront</div>
-          <div class="v" style="color:var(--paper)">Falcon Shipping Company on Amazon</div>
+        <div class="block" style="background:var(--panel);border-color:var(--panel)">
+          <div class="k" style="color:color-mix(in srgb,var(--panel-fg) 60%,transparent)">Storefront</div>
+          <div class="v" style="color:var(--panel-fg)">Falcon on Amazon</div>
           <a href="#shop" class="btn btn-primary" style="margin-top:14px">Visit our Amazon store
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -400,7 +371,7 @@
 <section style="padding:0 0 88px">
   <div class="wrap">
     <div class="band" id="shop">
-      <p class="eyebrow" style="color:var(--coral)">Ready when you are</p>
+      <p class="eyebrow">Ready when you are</p>
       <h2>Browse the full collection on Amazon.</h2>
       <p>Prime‑fast shipping, easy returns, and lifestyle finds worth showing off — all in one storefront.</p>
       <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:16.5px;padding:15px 28px">Shop Falcon on Amazon
@@ -411,20 +382,40 @@
 </section>
 
 <footer>
-  <div class="wrap foot">
-    <a href="#home" class="brand">
-      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#FF5A32"/><path d="M9 25c6-1 9-4 11-9 1 3 1 5 0 7 3-1 6-3 8-7-1 7-6 12-13 12-3 0-5-1-6-3Z" fill="#fff"/><circle cx="26.5" cy="13.5" r="1.6" fill="#1B1420"/></svg>
-      Falcon Shipping Co.
-    </a>
-    <div class="foot-links">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#shop">Amazon Store</a>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a href="#home" class="wordmark">
+          <svg class="glyph" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M4 27c9-1 15-6 18-15 1 4 1 8-1 11 5-1 10-5 13-12-1 12-10 20-21 20-4 0-8-1-9-4Z" fill="currentColor"/><circle cx="30" cy="14" r="1.7" fill="var(--gold)"/></svg>
+          FALCON
+        </a>
+        <p>Global trade. Trusted connections. Curated lifestyle goods, shipped fast across the USA through our Amazon storefront.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#shop">Amazon Store</a>
+      </div>
+      <div class="foot-col">
+        <h4>Address</h4>
+        <address>
+          Falcon<br>
+          30 North Gould Street, STE R<br>
+          Sheridan, Wyoming 82801<br>
+          United States
+        </address>
+      </div>
     </div>
-    <small>© 2026 Falcon Shipping Company · USA</small>
+    <div class="foot-bottom">
+      <small>© 2026 Falcon · Sheridan, Wyoming, USA</small>
+      <small>Global Trade. Trusted Connections.</small>
+    </div>
   </div>
 </footer>
 
 <script>
-  // Mobile menu
   const menuBtn = document.getElementById('menuBtn');
   const navlinks = document.getElementById('navlinks');
   menuBtn.addEventListener('click', () => {
@@ -435,7 +426,6 @@
     navlinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false);
   }));
 
-  // Scroll-spy active nav
   const sections = ['home','about','contact'].map(id => document.getElementById(id));
   const links = Object.fromEntries([...navlinks.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
   const spy = new IntersectionObserver((entries) => {
@@ -448,7 +438,6 @@
   }, { rootMargin: '-45% 0px -50% 0px' });
   sections.forEach(s => s && spy.observe(s));
 
-  // Contact form -> mailto
   const form = document.getElementById('contactForm');
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
