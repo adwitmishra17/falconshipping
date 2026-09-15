@@ -65,7 +65,8 @@
 
   /* Wordmark */
   .wordmark{font-family:"Cinzel",serif;font-weight:600;letter-spacing:.14em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:10px}
-  .wordmark .glyph{width:30px;height:30px;flex:none;color:var(--ink)}
+  .wordmark .mark{display:inline-flex;align-items:center;background:#fff;border-radius:6px;padding:2px 5px;line-height:0;flex:none}
+  .wordmark .mark img{height:24px;width:auto;display:block}
   .wordmark b{color:var(--gold);font-weight:700}
 
   /* Buttons */
@@ -203,10 +204,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="#home" class="wordmark brand" aria-label="Falcon home">
-      <svg class="glyph" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <path d="M4 27c9-1 15-6 18-15 1 4 1 8-1 11 5-1 10-5 13-12-1 12-10 20-21 20-4 0-8-1-9-4Z" fill="currentColor"/>
-        <circle cx="30" cy="14" r="1.7" fill="var(--gold)"/>
-      </svg>
+      <span class="mark"><img src="logo-mark.png" alt="Falcon emblem"></span>
       FALCON
     </a>
     <nav class="nav-links" id="navlinks">
@@ -386,7 +384,7 @@
     <div class="foot">
       <div class="foot-brand">
         <a href="#home" class="wordmark">
-          <svg class="glyph" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M4 27c9-1 15-6 18-15 1 4 1 8-1 11 5-1 10-5 13-12-1 12-10 20-21 20-4 0-8-1-9-4Z" fill="currentColor"/><circle cx="30" cy="14" r="1.7" fill="var(--gold)"/></svg>
+          <span class="mark"><img src="logo-mark.png" alt="Falcon emblem"></span>
           FALCON
         </a>
         <p>Global trade. Trusted connections. Curated lifestyle goods, shipped fast across the USA through our Amazon storefront.</p>
