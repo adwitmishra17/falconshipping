@@ -1,0 +1,467 @@
+<title>Falcon Shipping Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  :root{
+    --paper:#FBF6EE;
+    --paper-2:#F3EBDE;
+    --card:#FFFFFF;
+    --ink:#1B1420;
+    --ink-soft:#4A3F49;
+    --muted:#8A8079;
+    --line:#E7DDCE;
+    --coral:#FF5A32;
+    --coral-deep:#E8431E;
+    --teal:#0FA99C;
+    --teal-soft:#DDF3F0;
+    --sky:#F7ECE2;
+    --shadow:0 18px 40px -24px rgba(27,20,32,.45);
+    --shadow-sm:0 8px 22px -16px rgba(27,20,32,.4);
+  }
+  :root{ --paper-2:#F3EBDE; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141019;
+      --paper-2:#1B1522;
+      --card:#201927;
+      --ink:#F7F1E9;
+      --ink-soft:#CDBFC9;
+      --muted:#9A8F98;
+      --line:#2E2536;
+      --coral:#FF6B44;
+      --coral-deep:#FF8461;
+      --teal:#3AD1C2;
+      --teal-soft:#173230;
+      --sky:#241B2c;
+      --shadow:0 22px 46px -26px rgba(0,0,0,.7);
+      --shadow-sm:0 10px 24px -18px rgba(0,0,0,.65);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141019;
+    --paper-2:#1B1522;
+    --card:#201927;
+    --ink:#F7F1E9;
+    --ink-soft:#CDBFC9;
+    --muted:#9A8F98;
+    --line:#2E2536;
+    --coral:#FF6B44;
+    --coral-deep:#FF8461;
+    --teal:#3AD1C2;
+    --teal-soft:#173230;
+    --sky:#241B2C;
+    --shadow:0 22px 46px -26px rgba(0,0,0,.7);
+    --shadow-sm:0 10px 24px -18px rgba(0,0,0,.65);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Figtree",system-ui,-apple-system,Segoe UI,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Bricolage Grotesque","Figtree",sans-serif;font-weight:700;line-height:1.02;letter-spacing:-.02em;text-wrap:balance;margin:0}
+  a{color:inherit}
+  .wrap{width:min(1140px,92vw);margin-inline:auto}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700}
+  .section-pad{padding:88px 0}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:"Figtree";font-weight:600;font-size:15.5px;
+    padding:13px 22px;border-radius:999px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
+  .btn-primary{background:var(--coral);color:#fff}
+  .btn-primary:hover{background:var(--coral-deep);transform:translateY(-2px);box-shadow:0 14px 26px -14px rgba(255,90,50,.7)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .btn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+  /* Nav */
+  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;gap:20px;padding:15px 0}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:"Bricolage Grotesque";font-weight:800;font-size:20px;letter-spacing:-.02em;margin-right:auto}
+  .brand .mark{width:34px;height:34px;flex:none}
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-links a{font-weight:500;font-size:15px;text-decoration:none;color:var(--ink-soft);padding:8px 14px;border-radius:999px;transition:color .15s,background .15s}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink);background:var(--paper-2)}
+  .nav-cta{margin-left:6px}
+  .menu-btn{display:none;background:none;border:1.5px solid var(--line);border-radius:10px;padding:8px 11px;cursor:pointer;color:var(--ink)}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:70px 0 84px}
+  .hero h1{font-size:clamp(42px,6.4vw,78px)}
+  .hero h1 .pop{color:var(--coral);position:relative}
+  .lede{font-size:clamp(18px,2vw,20.5px);color:var(--ink-soft);max-width:34ch;margin:22px 0 30px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+  .stats{display:flex;gap:30px;margin-top:40px;flex-wrap:wrap}
+  .stat .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:30px;line-height:1}
+  .stat .l{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+  /* Hero art */
+  .sky-card{position:relative;background:
+      radial-gradient(120% 90% at 80% 10%, var(--sky), transparent 60%),
+      linear-gradient(160deg,var(--card),var(--paper-2));
+    border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);
+    aspect-ratio:5/5.2;overflow:hidden}
+  .route{position:absolute;inset:0}
+  .glide{position:absolute;top:16%;left:-14%;width:74px;color:var(--coral);animation:glide 9s linear infinite}
+  @keyframes glide{0%{transform:translate(0,0) rotate(2deg)}50%{transform:translate(150%,120%) rotate(-3deg)}100%{transform:translate(320%,52%) rotate(2deg)}}
+  .parcel{position:absolute;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-sm);padding:12px 14px;display:flex;gap:10px;align-items:center;font-size:13.5px;font-weight:600}
+  .parcel .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none;box-shadow:0 0 0 4px var(--teal-soft)}
+  .p1{top:22%;right:8%}
+  .p2{bottom:16%;left:9%}
+  .p3{bottom:40%;right:14%;background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .p3 .dot{background:var(--coral);box-shadow:0 0 0 4px rgba(255,90,50,.25)}
+  .track{position:absolute;left:18px;bottom:16px;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--muted)}
+
+  /* Marquee categories */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);overflow:hidden}
+  .marq{display:flex;gap:52px;padding:16px 0;white-space:nowrap;animation:marq 26s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;color:var(--ink-soft)}
+  .marq span{display:inline-flex;align-items:center;gap:14px}
+  .marq b{color:var(--coral)}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* Section head */
+  .head{max-width:56ch;margin-bottom:44px}
+  .head h2{font-size:clamp(30px,4vw,44px);margin-top:14px}
+  .head p{color:var(--ink-soft);margin:14px 0 0;font-size:18px}
+
+  /* Feature cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:var(--shadow-sm);transition:transform .18s ease, box-shadow .18s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .card .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--teal-soft);color:var(--teal);margin-bottom:16px}
+  .card h3{font-size:20px;margin-bottom:8px}
+  .card p{margin:0;color:var(--ink-soft);font-size:15.5px}
+
+  /* Categories */
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+  .cat{position:relative;border-radius:18px;padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);overflow:hidden;background:var(--card);transition:transform .18s}
+  .cat:hover{transform:translateY(-4px)}
+  .cat .k{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .cat h3{font-size:19px;margin-top:6px}
+  .cat.c1{background:linear-gradient(150deg,var(--card),#FFE7DE)}
+  .cat.c2{background:linear-gradient(150deg,var(--card),#DDF3F0)}
+  .cat.c3{background:linear-gradient(150deg,var(--card),#FBEFD6)}
+  .cat.c4{background:linear-gradient(150deg,var(--card),#E8E2F5)}
+  :root[data-theme="dark"] .cat.c1,:root[data-theme="dark"] .cat.c2,:root[data-theme="dark"] .cat.c3,:root[data-theme="dark"] .cat.c4{background:var(--card)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cat{background:var(--card)!important}}
+
+  /* About */
+  #about{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .about-copy p{color:var(--ink-soft);font-size:17.5px}
+  .values{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .value{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .value .n{font-family:"Space Mono",monospace;font-size:12px;color:var(--coral);font-weight:700}
+  .value h3{font-size:17px;margin:8px 0 6px}
+  .value p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+  .bigstats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;border-top:1px dashed var(--line);padding-top:32px}
+  .bigstat .n{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(30px,4vw,42px);color:var(--ink)}
+  .bigstat .l{color:var(--ink-soft);font-size:14.5px;margin-top:4px}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:52px;align-items:start}
+  form{display:grid;gap:16px}
+  .field{display:grid;gap:7px}
+  label{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  input,textarea{font-family:"Figtree";font-size:16px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:13px;padding:13px 15px;width:100%;transition:border-color .15s}
+  input:focus,textarea:focus{outline:none;border-color:var(--coral)}
+  textarea{resize:vertical;min-height:120px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .info{display:grid;gap:18px}
+  .info .block{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+  .info .k{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .info .v{font-size:17px;font-weight:600;margin-top:5px}
+  .info .v a{color:var(--coral);text-decoration:none}
+  .info .v a:hover{text-decoration:underline}
+  .hours{font-size:14.5px;color:var(--ink-soft);line-height:1.9;margin-top:5px}
+  .note{font-size:13px;color:var(--muted);margin-top:2px}
+
+  /* CTA band */
+  .band{background:var(--ink);color:var(--paper);border-radius:26px;padding:52px;text-align:center;margin:0 auto;box-shadow:var(--shadow)}
+  .band h2{font-size:clamp(28px,4vw,40px);color:var(--paper)}
+  .band p{color:color-mix(in srgb,var(--paper) 72%,transparent);max-width:46ch;margin:14px auto 26px}
+
+  footer{padding:44px 0 54px;border-top:1px solid var(--line);margin-top:0}
+  .foot{display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .foot .brand{margin-right:0}
+  .foot small{color:var(--muted);font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.04em}
+  .foot-links{display:flex;gap:18px}
+  .foot-links a{color:var(--ink-soft);text-decoration:none;font-size:14px}
+  .foot-links a:hover{color:var(--coral)}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;padding:48px 0 60px}
+    .sky-card{aspect-ratio:5/4;max-width:520px}
+    .cards{grid-template-columns:1fr}
+    .cats{grid-template-columns:1fr 1fr}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px 4vw 16px;gap:2px}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 14px}
+    .nav-cta{display:none}
+    .menu-btn{display:inline-flex}
+    .band{padding:38px 24px}
+    .section-pad{padding:64px 0}
+  }
+  @media (max-width:520px){ .cats{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.values{grid-template-columns:1fr} }
+</style>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand" aria-label="Falcon Shipping Company home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="#FF5A32"/>
+        <path d="M9 25c6-1 9-4 11-9 1 3 1 5 0 7 3-1 6-3 8-7-1 7-6 12-13 12-3 0-5-1-6-3Z" fill="#fff"/>
+        <circle cx="26.5" cy="13.5" r="1.6" fill="#1B1420"/>
+      </svg>
+      Falcon<span style="color:var(--coral)">.</span>
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#shop" class="btn btn-primary nav-cta">Shop on Amazon
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HOME / HERO -->
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Lifestyle goods · shipped fast in the USA</p>
+      <h1>Everyday upgrades, delivered at <span class="pop">falcon speed.</span></h1>
+      <p class="lede">Falcon Shipping Company curates fresh, functional lifestyle products and ships them across the U.S. through our Amazon storefront — with Prime-fast fulfillment you can count on.</p>
+      <div class="hero-cta">
+        <a href="#shop" class="btn btn-primary">Shop the storefront
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#about" class="btn btn-ghost">Our story</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">2‑day</div><div class="l">Prime shipping</div></div>
+        <div class="stat"><div class="n">500+</div><div class="l">Curated products</div></div>
+        <div class="stat"><div class="n">4.8★</div><div class="l">Avg. rating</div></div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="sky-card">
+        <svg class="route" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+          <path d="M40 300 C 140 200, 240 260, 360 90" stroke="var(--line)" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+        </svg>
+        <svg class="glide" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M4 26c8-1 13-6 15-13 2 4 2 8 0 11 4-1 8-4 11-10-1 10-8 17-18 17-4 0-7-2-8-5Z" fill="currentColor"/>
+        </svg>
+        <div class="parcel p1"><span class="dot"></span> Out for delivery</div>
+        <div class="parcel p2"><span class="dot"></span> Packed with care</div>
+        <div class="parcel p3"><span class="dot"></span> Order confirmed</div>
+        <div class="track">TRK# FLC‑9 4471 0082 · IN TRANSIT →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="marq">
+    <span>Home &amp; Living <b>◆</b></span><span>Wellness &amp; Self‑care <b>◆</b></span><span>Tech Accessories <b>◆</b></span><span>On‑the‑Go <b>◆</b></span><span>Kitchen Finds <b>◆</b></span><span>Desk &amp; Work <b>◆</b></span>
+    <span>Home &amp; Living <b>◆</b></span><span>Wellness &amp; Self‑care <b>◆</b></span><span>Tech Accessories <b>◆</b></span><span>On‑the‑Go <b>◆</b></span><span>Kitchen Finds <b>◆</b></span><span>Desk &amp; Work <b>◆</b></span>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Why shop with us</p>
+      <h2>A storefront built for the way you actually live.</h2>
+      <p>We're a young, hands‑on team that hunts down genuinely useful lifestyle products, vets every one, and gets them to your door fast. No filler, no fuss.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 13h11V5H3zM14 8h4l3 4v4h-7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="17.5" r="1.8" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h3>Fast, tracked fulfillment</h3>
+        <p>Fulfilled through Amazon with Prime‑fast, fully tracked delivery right across the United States.</p>
+      </article>
+      <article class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="m12 3 2.5 5.2 5.5.8-4 4 .9 5.5L12 21l-4.9 2.5.9-5.5-4-4 5.5-.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Curated, not cluttered</h3>
+        <p>Every item is chosen and tested by our team. If it wouldn't earn a spot in our own homes, it doesn't make the shelf.</p>
+      </article>
+      <article class="card">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.4-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.6-7 10-7 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Buyers we look after</h3>
+        <p>Real humans behind every order, responsive support, and a 4.8★ average from thousands of happy customers.</p>
+      </article>
+    </div>
+
+    <div style="margin-top:44px">
+      <p class="eyebrow" style="margin-bottom:6px">Shop by mood</p>
+      <div class="cats">
+        <a class="cat c1" href="#shop"><span class="k">01 · Everyday</span><h3>Home &amp; Living</h3></a>
+        <a class="cat c2" href="#shop"><span class="k">02 · Recharge</span><h3>Wellness &amp; Self‑care</h3></a>
+        <a class="cat c3" href="#shop"><span class="k">03 · Plug in</span><h3>Tech Accessories</h3></a>
+        <a class="cat c4" href="#shop"><span class="k">04 · Go</span><h3>On‑the‑Go</h3></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-pad">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">About Falcon</p>
+        <h2 style="font-size:clamp(30px,4.2vw,46px);margin:14px 0 20px">Young company, sharp instincts, serious about the details.</h2>
+        <p>Falcon Shipping Company started with a simple frustration: great everyday products were too hard to find, and too slow to arrive. So we built a storefront to fix both.</p>
+        <p>Today we operate a growing Amazon storefront serving customers across the USA. We source lifestyle products that are practical, well‑made and fairly priced — then lean on Amazon's fulfillment network so they reach you fast and arrive right. We're small enough to care about every order, and quick enough to keep our shelves fresh.</p>
+        <a href="#contact" class="btn btn-ghost" style="margin-top:8px">Talk to the team</a>
+      </div>
+      <div>
+        <div class="values">
+          <div class="value"><div class="n">V1</div><h3>Quality first</h3><p>We'd rather list ten things we love than a hundred we don't.</p></div>
+          <div class="value"><div class="n">V2</div><h3>Speed matters</h3><p>Fast fulfillment isn't a perk — it's the promise in our name.</p></div>
+          <div class="value"><div class="n">V3</div><h3>Straight talk</h3><p>Honest listings, clear photos, no inflated claims.</p></div>
+          <div class="value"><div class="n">V4</div><h3>Customer‑obsessed</h3><p>Every review, message and return teaches us something.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="bigstats">
+      <div class="bigstat"><div class="n">2023</div><div class="l">Founded &amp; flying since</div></div>
+      <div class="bigstat"><div class="n">50 states</div><div class="l">Shipping coast to coast</div></div>
+      <div class="bigstat"><div class="n">10k+</div><div class="l">Orders delivered</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-pad">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Contact</p>
+      <h2>Questions about an order — or a product you wish we carried?</h2>
+      <p>Drop us a line. We read every message and usually reply within one business day.</p>
+    </div>
+    <div class="contact-grid">
+      <form id="contactForm" novalidate>
+        <div class="row2">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" placeholder="Jordan Rivera" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@email.com" required></div>
+        </div>
+        <div class="field"><label for="subject">Subject</label><input id="subject" name="subject" type="text" placeholder="Order #123‑4567 — quick question"></div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us how we can help…" required></textarea></div>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          <button type="submit" class="btn btn-primary">Send message
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="note" id="formNote">Opens your email app, pre‑filled to our inbox.</span>
+        </div>
+      </form>
+
+      <aside class="info">
+        <div class="block">
+          <div class="k">Email us</div>
+          <div class="v"><a href="mailto:hello@falconshippingco.com">hello@falconshippingco.com</a></div>
+          <p class="note">General questions, wholesale &amp; press.</p>
+        </div>
+        <div class="block">
+          <div class="k">Customer support</div>
+          <div class="v"><a href="mailto:support@falconshippingco.com">support@falconshippingco.com</a></div>
+          <p class="note">Order help is fastest through your Amazon order page.</p>
+        </div>
+        <div class="block">
+          <div class="k">Hours</div>
+          <div class="hours">Mon – Fri · 9:00 AM – 6:00 PM EST<br>Weekends · limited support</div>
+        </div>
+        <div class="block" style="background:var(--ink);color:var(--paper);border-color:var(--ink)">
+          <div class="k" style="color:color-mix(in srgb,var(--paper) 60%,transparent)">Storefront</div>
+          <div class="v" style="color:var(--paper)">Falcon Shipping Company on Amazon</div>
+          <a href="#shop" class="btn btn-primary" style="margin-top:14px">Visit our Amazon store
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding:0 0 88px">
+  <div class="wrap">
+    <div class="band" id="shop">
+      <p class="eyebrow" style="color:var(--coral)">Ready when you are</p>
+      <h2>Browse the full collection on Amazon.</h2>
+      <p>Prime‑fast shipping, easy returns, and lifestyle finds worth showing off — all in one storefront.</p>
+      <a href="https://www.amazon.com/" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:16.5px;padding:15px 28px">Shop Falcon on Amazon
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#home" class="brand">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#FF5A32"/><path d="M9 25c6-1 9-4 11-9 1 3 1 5 0 7 3-1 6-3 8-7-1 7-6 12-13 12-3 0-5-1-6-3Z" fill="#fff"/><circle cx="26.5" cy="13.5" r="1.6" fill="#1B1420"/></svg>
+      Falcon Shipping Co.
+    </a>
+    <div class="foot-links">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#shop">Amazon Store</a>
+    </div>
+    <small>© 2026 Falcon Shipping Company · USA</small>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navlinks = document.getElementById('navlinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false);
+  }));
+
+  // Scroll-spy active nav
+  const sections = ['home','about','contact'].map(id => document.getElementById(id));
+  const links = Object.fromEntries([...navlinks.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        Object.values(links).forEach(l => l.classList.remove('active'));
+        links[e.target.id]?.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => s && spy.observe(s));
+
+  // Contact form -> mailto
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const subject = form.subject.value.trim() || 'Message from the Falcon website';
+    const message = form.message.value.trim();
+    if (!name || !email || !message) {
+      document.getElementById('formNote').textContent = 'Please add your name, email and a message.';
+      return;
+    }
+    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+    window.location.href = `mailto:hello@falconshippingco.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    document.getElementById('formNote').textContent = 'Opening your email app…';
+  });
+</script>
