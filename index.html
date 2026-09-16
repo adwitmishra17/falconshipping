@@ -324,7 +324,11 @@
       <p>Drop us a line. We read every message and usually reply within one business day.</p>
     </div>
     <div class="contact-grid">
-      <form id="contactForm" novalidate>
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="9a0dd88d-0231-4757-b6a0-e78bde3d415e">
+        <input type="hidden" name="from_name" value="Falcon Shipping Website">
+        <input type="hidden" name="redirect" value="false">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
         <div class="row2">
           <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" placeholder="Jordan Rivera" required></div>
           <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@email.com" required></div>
@@ -335,7 +339,7 @@
           <button type="submit" class="btn btn-primary">Send message
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <span class="note" id="formNote">Opens your email app, pre‑filled to our inbox.</span>
+          <span class="note" id="formNote">We usually reply within one business day.</span>
         </div>
       </form>
 
@@ -437,18 +441,38 @@
   sections.forEach(s => s && spy.observe(s));
 
   const form = document.getElementById('contactForm');
-  form.addEventListener('submit', (ev) => {
+  const note = document.getElementById('formNote');
+  form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const name = form.name.value.trim();
     const email = form.email.value.trim();
-    const subject = form.subject.value.trim() || 'Message from the Falcon website';
     const message = form.message.value.trim();
     if (!name || !email || !message) {
-      document.getElementById('formNote').textContent = 'Please add your name, email and a message.';
+      note.style.color = ''; note.textContent = 'Please add your name, email and a message.';
       return;
     }
-    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
-    window.location.href = `mailto:mckinson.llc@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-    document.getElementById('formNote').textContent = 'Opening your email app…';
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn.innerHTML;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    note.style.color = ''; note.textContent = '';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.reset();
+        note.style.color = 'var(--gold-deep)';
+        note.textContent = "Thanks — your message has been sent. We'll reply within one business day.";
+      } else {
+        note.style.color = ''; note.textContent = (data.message || 'Something went wrong.') + ' You can also email mckinson.llc@gmail.com.';
+      }
+    } catch (err) {
+      note.style.color = ''; note.textContent = 'Network error — please email us directly at mckinson.llc@gmail.com.';
+    } finally {
+      btn.disabled = false; btn.innerHTML = original;
+    }
   });
 </script>
