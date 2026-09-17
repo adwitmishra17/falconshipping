@@ -350,8 +350,13 @@
         </div>
         <div class="block">
           <div class="k">Email us</div>
-          <div class="v"><a href="mailto:mckinson.llc@gmail.com">mckinson.llc@gmail.com</a></div>
+          <div class="v"><a href="mailto:info@thefalconshipping.com">info@thefalconshipping.com</a></div>
           <p class="note">General questions, wholesale &amp; press.</p>
+        </div>
+        <div class="block">
+          <div class="k">Customer support</div>
+          <div class="v"><a href="mailto:support@thefalconshipping.com">support@thefalconshipping.com</a></div>
+          <p class="note">Order help &amp; after‑sales.</p>
         </div>
         <div class="block">
           <div class="k">Hours</div>
@@ -467,10 +472,10 @@
         note.style.color = 'var(--gold-deep)';
         note.textContent = "Thanks — your message has been sent. We'll reply within one business day.";
       } else {
-        note.style.color = ''; note.textContent = (data.message || 'Something went wrong.') + ' You can also email mckinson.llc@gmail.com.';
+        note.style.color = ''; note.textContent = (data.message || 'Something went wrong.') + ' You can also email support@thefalconshipping.com.';
       }
     } catch (err) {
-      note.style.color = ''; note.textContent = 'Network error — please email us directly at mckinson.llc@gmail.com.';
+      note.style.color = ''; note.textContent = 'Network error — please email us directly at support@thefalconshipping.com.';
     } finally {
       btn.disabled = false; btn.innerHTML = original;
     }
